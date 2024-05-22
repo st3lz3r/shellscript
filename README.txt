@@ -1,6 +1,13 @@
 +++ Sobre +++
 Aqui é armazenado scripts úteis feitos em shell
 
++++ ffmpeg +++
+Converter mp3 para opus:
+ffmpeg -i entrada.mp3 -c:a libopus saida.opus
+
+Converter mp4 para com VP9 webm/opus
+ffmpeg -i entrada.mp4 -c:v libvpx-vp9 -b:v 2M -c:a libopus saida.webm
+
 +++ remover_duplicado +++
 Remove arquivos duplicados em um diretório com base no hash md5 dos mesmos.
 
