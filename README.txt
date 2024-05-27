@@ -8,6 +8,12 @@ ffmpeg -i entrada.mp3 -c:a libopus saida.opus
 Converter mp4 para com VP9 webm/opus
 ffmpeg -i entrada.mp4 -c:v libvpx-vp9 -b:v 2M -c:a libopus saida.webm
 
+Sincronizar Audio com Vídeo quando audio sai antes
+ffmpeg -i entrada.mp4 -async 1 -c:v copy -c:a copy saida.mp4
+
+Sincronizar Audio com Vídeo quando video sai antes
+ffmpeg -i entrada.mp4 -vsync 1 -c:v copy -c:a copy saida.mp4
+
 +++ remover_duplicado +++
 Remove arquivos duplicados em um diretório com base no hash md5 dos mesmos.
 
