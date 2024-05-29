@@ -14,6 +14,13 @@ ffmpeg -i entrada.mp4 -async 1 -c:v copy -c:a copy saida.mp4
 Sincronizar Audio com Vídeo quando video sai antes
 ffmpeg -i entrada.mp4 -vsync 1 -c:v copy -c:a copy saida.mp4
 
+Gravar tela toda
+ffmpeg -video_size 1024x768 -framerate 60 -f x11grab -i :0.0 -f pulse -ac 2 -i default ~/destino/gravacao_$(date +"%d-%m-%Y_%H-%M-%S").mkv
+
+Stream Tela
+ffmpeg -s 1600x900 -f x11grab -i :0.0+0,0 -preset ultrafast -tune zero_latency -f mpegts -omit_video_pes_length 1 udp://$(hostname -I | xargs):PORTA &
+ffplay -fflags nobuffer -flags low_delay -probesize 32 -analyzeduration 1 -strict experimental -framedrop -f mpegts -vf setpts=0 udp://$(hostname -I | xargs):PORTA
+
 +++ remover_duplicado +++
 Remove arquivos duplicados em um diretório com base no hash md5 dos mesmos.
 
@@ -26,21 +33,6 @@ Sim, é respeitada a extensão do arquivo
 
 chmod +x renomear_massa.sh
 ./renomear_massa.sh ~/diretorio/renomear/em/massa
-
-+++ gravar_tela_toda +++
-Grava a tela toda (incluindo audio) para um arquivo ~/videos/gravacao_{timestamp}.mkv
-Se atentar a resolução 1600x900 para bater com a resolução do seu monitor.
-
-chmod +x gravar_tela_toda.sh
-./gravar_tela_toda.sh
-
-+++ stream_tela +++
-Cria uma tela contendo o stream da sua tela atual.
-Se atentar a resolução 1600x900 para bater com a resolução do seu monitor.
-Se atentar a porta 1608 para não interferir com uma porta de outra aplicação.
-
-chmod +x stream_tela.sh
-./stream_tela.sh
 
 +++ juntar_audios +++
 Juntar vários arquivos de audios para um arquivo ~/diretorio/contendo/audios/output.{extensao_arquivo}.
