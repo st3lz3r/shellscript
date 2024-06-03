@@ -5,9 +5,15 @@ contador=1
 
 cd $diretorio
 
-for f in *; do 
+mkdir tmp
+
+for f in *.*; do 
 	extensao="${f##*.}"
-	mv -v "$f" "$(printf "$(basename "$diretorio")_%02i%s" "$contador" ".$extensao")"
+	extensao="${extensao,,}"
+	mv -v "$f" tmp/"$(printf "$(basename "$diretorio")_%02i%s" "$contador" ".$extensao")"
 	
 	((contador++))
 done
+
+mv tmp/* .
+rm -r tmp
