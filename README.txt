@@ -1,6 +1,12 @@
 +++ Sobre +++
 Aqui é armazenado scripts úteis feitos em shell
 
++++ Youtube-dl +++
+Eu recomendo antes de executar os comandos abaixo, criar uma pasta separada para salvar todos itens da playlist.
+
+yt-dlp -i -f mp4 --yes-playlist 'https://www.youtube.com/watch?v=7Vy8970q0Xc&list=PLwJ2VKmefmxpUJEGB1ff6yUZ5Zd7Gegn2'
+yt-dlp -i PLwJ2VKmefmxpUJEGB1ff6yUZ5Zd7Gegn2
+
 +++ ffmpeg +++
 Converter mp3 para opus:
 ffmpeg -i entrada.mp3 -c:a libopus saida.opus
