@@ -40,12 +40,12 @@ Sim, é respeitada a extensão do arquivo
 chmod +x renomear_massa.sh
 ./renomear_massa.sh ~/diretorio/renomear/em/massa
 
-+++ juntar_audios +++
++++ juntar_audio_video +++
 Juntar vários arquivos de audios para um arquivo ~/diretorio/contendo/audios/output.{extensao_arquivo}.
 Se atentar que os arquivos precisam ter a mesma extensão.
 
-chmod +x juntar_audios.sh
-./juntar_audios ~/diretorio/contendo/audios
+chmod +x juntar_audio_video.sh
+./juntar_audio_video ~/diretorio/contendo/audios
 
 +++ ascii2html +++
 Converter um desenho em ASCII para HTML (entre tag <a> com <br> para quebra de linha).
